@@ -21,6 +21,5 @@ jobs:
       - run: python scripts/apply_mongo.py
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          MONGODB_DB: ${{ secrets.MONGODB_DB }}
           MONGODB_TLS: "true"
           MONGODB_TLS_CA_FILE: ${{ secrets.MONGODB_TLS_CA_FILE }}

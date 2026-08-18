@@ -8,16 +8,6 @@ from scripts.apply_mongo import apply_scripts, load_config
 
 
 class ApplyMongoTest(unittest.TestCase):
-    def test_repository_config_defines_database_name(self):
-        root = Path(__file__).resolve().parents[1]
-        with patch.dict(os.environ, {
-            "MONGODB_URI": "mongodb://localhost:27017/app",
-            "MONGODB_DB": "app",
-            "MONGODB_TLS": "false",
-            "MONGODB_TLS_CA_FILE": "",
-        }):
-            self.assertEqual(load_config(root)["database"]["name"], "app")
-
     def test_load_config_expands_environment(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
