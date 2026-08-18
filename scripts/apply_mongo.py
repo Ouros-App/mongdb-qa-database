@@ -103,7 +103,7 @@ def main() -> None:
     if db_cfg.get("tls_ca_file"):
         tls_options["tlsCAFile"] = db_cfg["tls_ca_file"]
     client = MongoClient(db_cfg["connection_url"], **tls_options)
-    db = client.get_default_database()
+    db = client[db_cfg["name"]]
     commit_id = os.getenv("GITHUB_SHA") or git_value(root, "rev-parse", "HEAD")
     commit_message = os.getenv("GITHUB_COMMIT_MESSAGE") or git_value(root, "log", "-1", "--pretty=%B")
     if commit_id == "unknown":
